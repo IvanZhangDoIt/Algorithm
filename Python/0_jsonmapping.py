@@ -36,11 +36,13 @@ if __name__ == "__main__":
             'i_a_a': 12,
             'i_a_b': 'value of i_a_b'
         },
-        'i_b': "abc"
+        'i_b': "abc",
+        'i_c': "value of i_c"
     }
     mapping_rules = {
         'i_a.i_a_a': 'o_a',
-        'i_b': 'o_b.o_b_a'
+        'i_b': 'o_b.o_b_a',
+        'i_c': 'o_c'
     }
 
     print("\nThe input is :\n{}".format(input))
