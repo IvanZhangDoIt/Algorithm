@@ -7,7 +7,7 @@
  * @param {*} mappingRules
  * @return {*}
  */
-function converter(input, mappingRules) {
+export function converter(input, mappingRules) {
   let result = {};
   const splitter = '.';
   for (const key in mappingRules) {
@@ -53,31 +53,3 @@ function converter(input, mappingRules) {
   }
   return result;
 }
-
-const input = {
-  i_a: {
-    i_a_a: 12,
-    i_a_b: 'value of i_a_b',
-  },
-  i_b: 'abc',
-  i_c: 'value of i_c',
-  i_d: 'value of i_d',
-};
-const mappingRules = {
-  'i_a.i_a_a': 'o_a',
-  i_b: 'o_b.o_b_a',
-  i_c: 'o_c',
-  i_d: 'o_d',
-};
-
-console.log('--------------------------------------------');
-console.log(`The input is: \n`);
-console.log(input);
-
-console.log('The mapping rule is: \n');
-console.log(mappingRules);
-
-const output = converter(input, mappingRules);
-console.log('--------------------------------------------');
-console.log('The output is: \n');
-console.log(JSON.stringify(output));

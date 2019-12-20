@@ -10,6 +10,7 @@
   "engines": {
     "node": ">=8.9"
   },
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
@@ -52,20 +53,21 @@
     "@loopback/rest-explorer": "^1.4.6"
   },
   "devDependencies": {
-    "rimraf": "^3.0.0",
-    "source-map-support": "^0.5.16",
+    "@loopback/eslint-config": "^5.0.0",
     "@loopback/testlab": "^1.10.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.17.6",
-    "mocha": "^6.2.2",
-    "prettier": "^1.19.1",
-    "@typescript-eslint/parser": "^2.10.0",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
-    "@loopback/eslint-config": "^5.0.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "babel-preset-es2015": "^6.24.1",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-eslint-plugin": "^2.1.0",
     "eslint-plugin-mocha": "^6.2.2",
+    "mocha": "^6.2.2",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "source-map-support": "^0.5.16",
     "typescript": "~3.7.3"
   }
 }
