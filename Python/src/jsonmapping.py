@@ -31,13 +31,6 @@ def rule_converter(input: dict, mapping_rules: dict):
 
     return result
 
-def test(input, mapping_rules, expected):
-    print("\nThe input is :\n{}".format(input))
-    print("\nThe mapping rule is:\n{}".format(mapping_rules))
-    output = rule_converter(input, mapping_rules)
-    print("The ouput is : \n{}".format(output))
-    print("-------------------------------------------\nTest result is: {} \n -----------------------------------------".format(json.dumps(expected) == json.dumps(output)))
-
 if __name__ == "__main__":
     input = {
         'i_a': {
@@ -59,34 +52,5 @@ if __name__ == "__main__":
         },
         "o_c": "value of i_c"
     }
-    test(input,mapping_rules, expected)
-
-    input = {
-        'i_a': {
-            'i_a_a': 'value of i_a_a',
-            'i_a_b': 'value of i_a_b',
-            'i_a_c': 'value of i_a_c',
-        },
-        'i_b': 'abc',
-        'i_c': 'value of i_c',
-        'i_d': 'value of i_d',
-    }
-    mapping_rules = {
-        'i_a.i_a_a': 'o_a.o_a_a',
-        'i_a.i_a_b': 'o_a.o_a_b',
-        'i_a.i_a_c': 'o_a.o_a_c',
-        'i_b': 'o_b',
-        'i_c': 'o_c',
-        'i_d': 'o_d',
-    }
-    expected =   {
-        "o_a": {
-        "o_a_a": "value of i_a_a",
-        "o_a_b": "value of i_a_b",
-        "o_a_c": "value of i_a_c"
-        },
-        "o_b": "abc",
-        "o_c": "value of i_c",
-        "o_d": "value of i_d"
-    }
-    test(input,mapping_rules, expected)
+    output = rule_converter(input, mapping_rules)
+    print("Ouput is: \n {}".format(output))
