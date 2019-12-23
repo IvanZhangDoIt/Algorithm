@@ -21,7 +21,7 @@
     "sourceMap": true,
     "declaration": true
   },
-  "include": ["src"],
+  "include": ["src", "test/0_jsonmapping.js"],
   "exclude": [
     "node_modules/**",
     "packages/*/node_modules/**",

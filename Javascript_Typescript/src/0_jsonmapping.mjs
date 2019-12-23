@@ -15,40 +15,37 @@ export function converter(input, mappingRules) {
     const outputAttribute = mappingRules[key];
     let value = {};
 
-    console.log('The mapping key value is:');
-    console.log(inputAttribute, outputAttribute);
-
     if (inputAttribute.indexOf(splitter) === -1) {
-      // not found
-      console.log('The input attributes: without comma:', inputAttribute);
+      //splitter not found, get the value directly
       value = input[inputAttribute];
-      console.log('The value get is : ' + value);
     } else {
-      console.log('The input attributes: with comma:', inputAttribute);
+      //with splitter, it's a layered value.
       const inputAttributesChain = inputAttribute.split(splitter);
       let obj = input;
+      //get the deepest attribute
       for (const attr of inputAttributesChain) {
         obj = obj[attr];
       }
       value = obj;
-      console.log('The value get is : ' + value);
     }
 
+
     if (outputAttribute.indexOf(splitter) === -1) {
-      console.log('The outputAttributes: without comma:', outputAttribute);
+      //output attribute has no splitter, set the value directly
       result[outputAttribute] = value;
-      console.log('The result is : ', result);
     } else {
-      console.log('The outputAttributes: with comma:', outputAttribute);
+      //with splitter, it's a layered value.
       const outputAttributeChain = outputAttribute.split(splitter);
-      let obj = value;
-      for (const attr of outputAttributeChain.reverse()) {
-        let temp = {};
-        temp[attr] = obj;
-        obj = temp;
+      let obj = result;
+      const chainLen = outputAttributeChain.length;
+      for (let index = 0; index < chainLen; index++) {
+        const keyChain = outputAttributeChain[index];
+        if(!Object.keys(obj).includes(keyChain)){
+          // key not exist, create a new object or set it to the value as it's in the deepest layer.
+          obj[keyChain] = index===chainLen-1 ? value : {};
+        }
+        obj = obj[keyChain];
       }
-      result = Object.assign(obj, result);
-      console.log('The result is : ', result);
     }
   }
   return result;
